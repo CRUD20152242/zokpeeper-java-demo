@@ -3,8 +3,11 @@ package com.zookeeper.connection.Impl;
 import com.zookeeper.connection.GetZKconnection;
 import com.zookeeper.watcher.Impl.MyWatcherImpl;
 import com.zookeeper.watcher.MyWatcher;
+import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.Watcher;
+import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.data.Stat;
 import org.apache.zookeeper.server.ConnectionBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +17,7 @@ import java.io.IOException;
 public class ConnectionImpl  implements GetZKconnection {
     private Watcher myWatcher = new MyWatcherImpl();
     public final Logger logger = LoggerFactory.getLogger(getClass());
+    public volatile  ZooKeeper zooKeeper = null;
     /**
      * 构造函数有很多，分别是
      * 1.服务器集群ip:端口号 多个ip逗号分割  还可以最后指定操作的目录，
@@ -29,7 +33,6 @@ public class ConnectionImpl  implements GetZKconnection {
      */
     public ZooKeeper getZookeeper(){
         logger.info("开始准备实例化zookeeper实例");
-        ZooKeeper zooKeeper = null;
         try {
             zooKeeper = new ZooKeeper("127.0.0.1:1281",5000,myWatcher);
         } catch (IOException e) {
@@ -38,6 +41,7 @@ public class ConnectionImpl  implements GetZKconnection {
         }
         return zooKeeper;
     }
+
 
     public void test() {
 
@@ -59,4 +63,36 @@ public class ConnectionImpl  implements GetZKconnection {
                 "     */";
     }
 
+    public static void main(String[] args) throws Exception{
+        Watcher myWatcher1 = new MyWatcherImpl();
+        GetZKconnection getZKconnection = new ConnectionImpl();
+        ZooKeeper zooKeeper = getZKconnection.getZookeeper();
+//        zooKeeper.addAuthInfo("","");  //客户端啊提交自己的权限
+//        zooKeeper.close();
+
+//      1.  各个参数对应的含义是  路径，数据，权限 ，节点类型， 另一个参数是异步化创建
+//        public void create(String path, byte[] data, List<ACL> acl, CreateMode createMode, StringCallback cb, Object ctx)
+//        使用例子
+//        zooKeeper.create("p1","你好".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
+//      2. 删除指定路径下的节点  version=-1 意思是删除所有版本下的这个znode,其余的值是删除对应的版本 另一个版本是异步化删除
+//        zooKeeper.delete("",1);
+//        zooKeeper.delete("/p2",-1);
+//      3. 检测指定路径下的节点是否存在
+//         参数有 路径，是否监控这个节点（监控器）
+//        zooKeeper.exists("/p1",true);  是否监控  默认的监控是我们创建连接时的监听器
+//        zooKeeper.exists("/p1",myWatcher1); 配置我们自己的监听器
+//       4.获取指定path下的所有节点
+//        zooKeeper.getChildren();
+//        zooKeeper.getChildren("p2",false);
+//       5.获取某个目录节点的访问权限列表
+//        zooKeeper.getACL();
+//      6.获取指定节点的数据
+//         参数分别时路径  是否监控 节点状态等信息（用来匹配）
+//        zooKeeper.getData("p3",false,new Stat());
+//       7. zookeeper的事务操作
+//        zooKeeper.transaction();
+//       8. 将多个操作合并成一个操作  合并后的操作也是原子性的
+//        zooKeeper.multi();
+
+    }
 }
