@@ -6,7 +6,12 @@
 
     <groupId>com.ccut.zookeeper</groupId>
     <artifactId>zookpeeper-java</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>zookeeper-server</module>
+        <module>zookeeper-common</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>
@@ -18,6 +23,18 @@
                 <!--<type>pom</type>-->
             </dependency>
 
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${test.ver}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${json.ver}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -27,6 +44,8 @@
             <properties>
                 <project.ver>1.0-SNAPSHOT</project.ver>
                 <zk.ver>3.4.14</zk.ver>
+                <test.ver>4.12</test.ver>
+                <json.ver>2.8.5</json.ver>
             </properties>
         </profile>
     </profiles>

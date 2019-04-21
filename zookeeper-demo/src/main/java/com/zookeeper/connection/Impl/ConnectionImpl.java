@@ -67,6 +67,7 @@ public class ConnectionImpl  implements GetZKconnection {
         Watcher myWatcher1 = new MyWatcherImpl();
         GetZKconnection getZKconnection = new ConnectionImpl();
         ZooKeeper zooKeeper = getZKconnection.getZookeeper();
+        zooKeeper.create("","".getBytes(),ZooDefs.Ids.OPEN_ACL_UNSAFE,CreateMode.EPHEMERAL_SEQUENTIAL);
 //        zooKeeper.addAuthInfo("","");  //客户端啊提交自己的权限
 //        zooKeeper.close();
 

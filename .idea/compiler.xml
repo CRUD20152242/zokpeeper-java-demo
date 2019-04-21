@@ -6,12 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="zookeeper-common" />
         <module name="zookeeper-demo" />
-        <module name="zookpeeper-java-demo" />
+        <module name="zookeeper-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="zookeeper-common" target="1.5" />
       <module name="zookeeper-demo" target="1.5" />
+      <module name="zookeeper-server" target="1.5" />
       <module name="zookpeeper-java-demo" target="1.5" />
     </bytecodeTargetLevel>
   </component>
