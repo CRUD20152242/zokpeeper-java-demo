@@ -10,6 +10,7 @@ public class ZnodeImpl implements ZnodeOperation {
     public boolean createPersistendZnode(String path, byte[] data, ZooKeeper zooKeeper) {
         try {
             zooKeeper.create(path,data, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+            this.existZnode(path,zooKeeper);
         } catch (KeeperException e) {
             e.printStackTrace();
             return false;
