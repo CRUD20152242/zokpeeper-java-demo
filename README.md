@@ -118,3 +118,38 @@ ls只显示该结点下有那些子节点  而ls2 /还会显示其他信息 除�
 3. 如果我们创建的节点是临时节点 那么临时节点不可以创建孩子节点
 
 
+
+##curator 客户端用法
+创建连接
+        CuratorFramework zkClient  = CuratorFrameworkFactory.newClient(host, new RetryNTimes(10,1000) {
+        });
+
+        zkClient.start();
+      
+ 创建节点：
+   zkClient.create().creatingParentsIfNeeded().forPath("/config/curatorT1","数据1".getBytes());
+  不同类型的监视器如下：假设他们同时监视节点 /config  
+                       
+                       
+    PathChildrenCache      监视器无享用    
+    NodeCache
+    TreeCache
+   当修改config的数据时 PathChildrenCache  监视器无响应   NodeCache无响应 TreeCache响应
+   
+   当删除config节点的子节点时 PathChildrenCache与TreeCache均监视到了变化 有响应
+   
+   当修改config节点子节点数据时 PathChildrenCache与TreeCache均监视到了变化 有响应
+   
+   结论1
+   
+   
+   PathChildrenCache监视指定节点的所有子节点的变化  注意仅仅关注子节点
+   
+   
+   NodeCache  监控给定节点的变化  不监控子节点        
+   
+   TreeCache 具有 PathChildrenCache NodeCache的所有功能|
+   
+      
+
+
