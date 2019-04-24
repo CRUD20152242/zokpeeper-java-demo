@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/zookeeper-common/zookeeper-common.iml" filepath="$PROJECT_DIR$/zookeeper-common/zookeeper-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/zookeeper-demo/zookeeper-demo.iml" filepath="$PROJECT_DIR$/zookeeper-demo/zookeeper-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/zookeeper-server/zookeeper-server.iml" filepath="$PROJECT_DIR$/zookeeper-server/zookeeper-server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/zookpeeper-java-demo.iml" filepath="$PROJECT_DIR$/.idea/zookpeeper-java-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/zookpeeper-java.iml" filepath="$PROJECT_DIR$/.idea/zookpeeper-java.iml" />
     </modules>
   </component>
 </project>
