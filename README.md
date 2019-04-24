@@ -4,7 +4,7 @@ zookeeper java客户端的使用及封装
 #环境准备
 下载zookeeper的压缩包 地址：http://mirror.bit.edu.cn/apache/zookeeper/
 
-客户端 maven
+客户端 maven 官方客户端
 
             <dependency>
                 <groupId>org.apache.zookeeper</groupId>
@@ -12,6 +12,13 @@ zookeeper java客户端的使用及封装
                 <version>${zk.ver}</version>
                 <!--<type>pom</type>-->
             </dependency>
+            
+    推荐使用下面这个客户端，可以解决监听机制仅仅响应一次的问题
+                <dependency>
+                    <groupId>org.apache.curator</groupId>
+                    <artifactId>curator-recipes</artifactId>
+                    <version>2.7.0</version>
+                </dependency>
             
 # 步骤
 ## 1 启动zookeeper服务端
@@ -144,6 +151,7 @@ ls只显示该结点下有那些子节点  而ls2 /还会显示其他信息 除�
    
    
    PathChildrenCache监视指定节点的所有子节点的变化  注意仅仅关注子节点
+   
    
    
    NodeCache  监控给定节点的变化  不监控子节点        
