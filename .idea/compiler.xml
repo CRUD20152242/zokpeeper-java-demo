@@ -9,12 +9,14 @@
         <module name="zookeeper-common" />
         <module name="zookeeper-demo" />
         <module name="zookeeper-server" />
+        <module name="zookeeper-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="zookeeper-common" target="1.5" />
       <module name="zookeeper-demo" target="1.5" />
       <module name="zookeeper-server" target="1.5" />
+      <module name="zookeeper-web" target="1.7" />
       <module name="zookpeeper-java-demo" target="1.5" />
     </bytecodeTargetLevel>
   </component>

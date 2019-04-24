@@ -11,6 +11,7 @@
     <modules>
         <module>zookeeper-server</module>
         <module>zookeeper-common</module>
+        <module>zookeeper-web</module>
     </modules>
 
     <dependencyManagement>
@@ -40,6 +41,40 @@
                 <artifactId>gson</artifactId>
                 <version>${json.ver}</version>
             </dependency>
+            <!-- spring start -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
@@ -52,6 +87,7 @@
                 <zk.ver>3.4.14</zk.ver>
                 <test.ver>4.12</test.ver>
                 <json.ver>2.8.5</json.ver>
+                <spring.version>4.0.5.RELEASE</spring.version>
             </properties>
         </profile>
     </profiles>
