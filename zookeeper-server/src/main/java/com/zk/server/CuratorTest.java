@@ -10,6 +10,7 @@ import org.apache.curator.framework.recipes.cache.NodeCache;
 import org.apache.curator.framework.recipes.cache.PathChildrenCache;
 import org.apache.curator.framework.recipes.cache.PathChildrenCacheListener;
 import org.apache.curator.framework.recipes.cache.TreeCache;
+import org.apache.curator.framework.recipes.nodes.PersistentEphemeralNode;
 import org.apache.curator.retry.RetryNTimes;
 
 /**
@@ -31,7 +32,8 @@ public class CuratorTest {
 
             String result = new String(zkClient.getData().forPath("/config/curatorT1"));
 
-            System.out.println(result);
+            System.out.println(result+"测试同时创建多个临时节点");
+
             System.out.println("创建path 并且获取数据成功 开始测试curator的监视器是否也是一次性的");
 
             /**
