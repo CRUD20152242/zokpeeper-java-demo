@@ -65,6 +65,7 @@ public class CuratorTestTest {
 
 
     public void getpaths(CuratorFramework zkClient,String root,List<String> myPaths){
+        String temp = root;
         myPaths.add(root);
         List<String> paths= getChildNode(zkClient,root);
         if(null==paths){
@@ -73,6 +74,8 @@ public class CuratorTestTest {
             for (String path1:paths) {
                 root = "/".equals(root)?root+path1:root+"/"+path1;
                 getpaths(zkClient,root,myPaths);
+                root=temp;
+
             }
         }
     }
@@ -81,6 +84,8 @@ public class CuratorTestTest {
     public List<String> getChildNode(CuratorFramework zkClient,String path){
         try {
             List<String> result = zkClient.getChildren().forPath(path);
+//            这有个bug，第一次节点为zookeeper的会过滤掉 但是下一轮不会
+
            if ("zookeeper".equals(result.get(0))){
                result.remove(0);
            }
