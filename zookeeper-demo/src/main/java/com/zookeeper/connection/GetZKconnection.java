@@ -9,3 +9,18 @@ public interface GetZKconnection {
 
     public void test();
 }
+//
+//    void rescur(int s){
+//        int x;
+//        cin>>x;
+//        if(x==0){
+//            s=0;
+//        }else{
+//            rescur(s);
+//            s+=x;
+//        }
+//        cout s;
+//    }
+//while(x!=0){
+//    s+=x;
+//        }

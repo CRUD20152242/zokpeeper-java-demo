@@ -13,6 +13,9 @@ import org.apache.curator.framework.recipes.cache.TreeCache;
 import org.apache.curator.framework.recipes.nodes.PersistentEphemeralNode;
 import org.apache.curator.retry.RetryNTimes;
 
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * 非官方提供的zookeeper客户端实战测试
  */
@@ -27,8 +30,7 @@ public class CuratorTest {
         System.out.println("连接zookeeper服务器成功");
 
         try {
-            zkClient.create().creatingParentsIfNeeded().forPath("/config/curatorT1","数据1".getBytes());
-
+            zkClient.create().creatingParentsIfNeeded().forPath("/config/curatorT1/p1/p2/p3","数据1".getBytes());
 
             String result = new String(zkClient.getData().forPath("/config/curatorT1"));
 
@@ -55,6 +57,17 @@ public class CuratorTest {
             TreeCache treeCache = new TreeCache(zkClient,"/config");
             treeCache.getListenable().addListener(new TreeListener());
             treeCache.start();
+
+
+
+
+            List<String> paths = zkClient.getChildren().forPath("/");
+            Iterator iterator = paths.iterator();
+            System.out.println("123456787-----------------------");
+            while (iterator.hasNext()){
+                System.out.println(iterator.next());
+            }
+
             Thread.sleep(1000*60*60);
         } catch (Exception e) {
             e.printStackTrace();

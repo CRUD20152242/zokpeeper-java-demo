@@ -16,6 +16,28 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.8.1</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${lang3.ver}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.ver}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.ver}</version>
+            </dependency>
             <!-- https://mvnrepository.com/artifact/org.apache.zookeeper/zookeeper -->
             <dependency>
                 <groupId>org.apache.zookeeper</groupId>
@@ -42,6 +64,7 @@
                 <version>${json.ver}</version>
             </dependency>
 
+
         </dependencies>
     </dependencyManagement>
 
@@ -53,6 +76,8 @@
                 <zk.ver>3.4.14</zk.ver>
                 <test.ver>4.12</test.ver>
                 <json.ver>2.8.5</json.ver>
+                <spring.ver>4.0.5.RELEASE</spring.ver>
+                <lang3.ver>3.7</lang3.ver>
             </properties>
         </profile>
     </profiles>
@@ -60,3 +85,4 @@
 
 
 </project>
+
